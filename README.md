@@ -1,4 +1,4 @@
-# O-Elini-Indir-JS
+# O-Elini-Indir
 
 Biraz yapa yeka biraz kod = eğlence
 
