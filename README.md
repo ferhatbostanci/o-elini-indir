@@ -1,5 +1,7 @@
 # O-Elini-Indir
 
-Biraz yapa yeka biraz kod = eğlence
+[Handtrack.js](https://github.com/victordibia/handtrack.js/) kütüphanesinin sağladığı bilgi ile eğlenceli bir uygulama.
 
-[Demo](https://ferhatbostanci.github.io/O-Elini-Indir-JS/)
+Webcam stream üzerinden analiz yapıp elinizi tespit etmeye çalışır, tespit etmesi halinde ses oynatır.
+
+- [Demo](https://ferhatbostanci.github.io/O-Elini-Indir-JS/)
