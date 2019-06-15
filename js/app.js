@@ -17,7 +17,7 @@ handTrack.startVideo(video).then(status => {
 
 function runDetection() {
     model.detect(video).then(predictions => {
-        //model.renderPredictions(predictions, canvas, context, video);
+        model.renderPredictions(predictions, canvas, context, video);
         if(predictions.length > 0 && audio.paused){
             audio.play();
         }
