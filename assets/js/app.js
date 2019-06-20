@@ -1,29 +1,37 @@
-const video = document.querySelector('#video');
-const audio = document.querySelector('#audio');
-const canvas = document.querySelector('#canvas');
-const context = canvas.getContext('2d');
-const modelParams = {flipHorizontal: true, imageScaleFactor: 0.7, maxNumBoxes: 20, iouThreshold: 0.5, scoreThreshold: 0.79,};
-let model;
+const video = document.getElementById('video');
+const audio = document.getElementById('audio');
+const canvas = document.getElementById('canvas');
+const context = canvas.getContext("2d");
+let model = null;
 
-handTrack.startVideo(video).then(status => {
+const modelParams = {
+    flipHorizontal: true,   // flip e.g for video
+    maxNumBoxes: 3,        // maximum number of boxes to detect
+    iouThreshold: 0.5,      // ioU threshold for non-max suppression
+    scoreThreshold: 0.8,    // confidence threshold for predictions.
+};
+
+handTrack.load(modelParams).then(lmodel => {
+    // detect objects in the image.
+    model = lmodel;
+    console.log("Loaded Model!");
+});
+
+handTrack.startVideo(video).then(function (status) {
+    document.getElementById('preview-area').hidden = true;
+    console.log("Video started", status);
     if(status){
-        navigator.getUserMedia({video: {}}, stream => {
-                video.srcObject = stream;
-                setInterval(runDetection, 100);
-            }, error => console.log(error)
-        );
+        runDetection();
     }
 });
 
 function runDetection() {
     model.detect(video).then(predictions => {
+        console.log("Predictions: ", predictions);
         model.renderPredictions(predictions, canvas, context, video);
+        requestAnimationFrame(runDetection);
         if(predictions.length > 0 && audio.paused){
             audio.play();
         }
     });
 }
-
-handTrack.load(modelParams).then(lmodel => {
-    model = lmodel;
-});

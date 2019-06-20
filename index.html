@@ -6,14 +6,23 @@
           name="viewport">
     <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>O Elini İndir!</title>
-
     <link rel="shortcut icon" href="assets/img/favicon.jpg">
-    <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"> </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/handtrackjs/dist/handtrack.min.js"></script>
     <link rel="stylesheet" href="assets/css/main.css">
 </head>
 <body>
 
-<div>
+<div id="preview-area">
+    <div class="sk-folding-cube">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+    </div>
+</div>
+
+<div class="video-div">
     <audio id="audio" src="assets/audio/O%20Elini%20İndir.mp3"></audio>
     <video id="video"></video>
     <canvas id="canvas"></canvas>
